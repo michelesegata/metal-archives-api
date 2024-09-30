@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "oBl4QM5/zeXrvYYGtDAxbcm/RksqCtDpPkmyb1nXtFZheQ7LO+ctQjxfOv9dorhgEXY1J6eWPGlccytflmCtvg==",
+  "success": true,
+  "projectFilePath": "/Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/MetalArchivesApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/michele/.nuget/packages/htmlagilitypack/1.11.67/htmlagilitypack.1.11.67.nupkg.sha512",
+    "/Users/michele/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/Users/michele/.nuget/packages/swashbuckle.aspnetcore.swagger/6.8.1/swashbuckle.aspnetcore.swagger.6.8.1.nupkg.sha512",
+    "/Users/michele/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.8.1/swashbuckle.aspnetcore.swaggergen.6.8.1.nupkg.sha512",
+    "/Users/michele/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.8.1/swashbuckle.aspnetcore.swaggerui.6.8.1.nupkg.sha512"
+  ],
+  "logs": []
+}
