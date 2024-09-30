@@ -35,3 +35,4 @@
 /Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/obj/Debug/net8.0/MetalArchivesApi.pdb
 /Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/obj/Debug/net8.0/MetalArchivesApi.genruntimeconfig.cache
 /Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/obj/Debug/net8.0/ref/MetalArchivesApi.dll
+/Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/bin/Debug/net8.0/HtmlAgilityPack.dll
