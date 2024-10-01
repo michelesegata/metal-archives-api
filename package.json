@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky",
-    "lint-staged": {
-      "*.cs": "dotnet format --include"
-    }
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.cs": "dotnet format --include"
   },
   "repository": {
     "type": "git",
