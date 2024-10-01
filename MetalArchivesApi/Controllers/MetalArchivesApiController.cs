@@ -5,7 +5,7 @@ namespace MetalArchivesApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class MetalArchivesApiController: ControllerBase
+public class MetalArchivesApiController : ControllerBase
 {
     private readonly IMetalArchivesService _metalArchivesService;
 
@@ -13,7 +13,7 @@ public class MetalArchivesApiController: ControllerBase
     {
         _metalArchivesService = metalArchivesService;
     }
-    
+
     [HttpGet("search")]
     public async Task<IActionResult> SearchBandsByName([FromQuery] string bandName)
     {
@@ -25,5 +25,5 @@ public class MetalArchivesApiController: ControllerBase
         var result = await _metalArchivesService.SearchBandsByName(bandName);
         return Ok(result);
     }
-    
+
 }
