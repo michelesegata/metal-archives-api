@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetalArchivesApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b4f1fd3f2ff24543317ea53cb551a7663e9e5c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa433564e90d8ceb8a96f1d6e4aa883de33ee365")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetalArchivesApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetalArchivesApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
