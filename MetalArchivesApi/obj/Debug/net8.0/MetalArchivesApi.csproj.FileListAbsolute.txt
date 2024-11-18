@@ -271,3 +271,4 @@
 /Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 /Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
+/Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
