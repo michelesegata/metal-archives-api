@@ -4,20 +4,13 @@ using MetalArchivesApi.Model;
 
 namespace MetalArchivesApi.Services;
 
-public class MetalArchivesService : IMetalArchivesService
+public class MetalArchivesService(HttpClient httpClient) : IMetalArchivesService
 {
-    private readonly HttpClient _httpClient;
-
-    public MetalArchivesService(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-    }
-
     public async Task<List<Band>> SearchBandsByName(string bandName)
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.metal-archives.com/search/ajax-band-search/?field=name&query={bandName}");
         request.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-        using HttpResponseMessage response = await _httpClient.SendAsync(request);
+        using HttpResponseMessage response = await httpClient.SendAsync(request);
         response.EnsureSuccessStatusCode();
 
         var jsonResponse = await response.Content.ReadAsStringAsync();

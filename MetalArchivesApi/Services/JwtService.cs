@@ -5,25 +5,18 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MetalArchivesApi.Services;
 
-public class JwtService : IJwtService
+public class JwtService(IConfiguration configuration) : IJwtService
 {
-    private readonly IConfiguration _configuration;
-
-    public JwtService(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
     public string GenerateJwtToken(string userId)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["JWT:Secret"]);
+        var key = Encoding.ASCII.GetBytes(configuration["JWT:Secret"]);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[] { new Claim("id", userId) }),
             Expires = DateTime.UtcNow.AddMinutes(30),
-            Issuer = _configuration["JWT:Issuer"],
-            Audience = _configuration["JWT:Audience"],
+            Issuer = configuration["JWT:Issuer"],
+            Audience = configuration["JWT:Audience"],
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
