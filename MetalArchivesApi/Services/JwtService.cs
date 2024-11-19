@@ -22,6 +22,8 @@ public class JwtService : IJwtService
         {
             Subject = new ClaimsIdentity(new[] { new Claim("id", userId) }),
             Expires = DateTime.UtcNow.AddMinutes(30),
+            Issuer = _configuration["JWT:Issuer"],
+            Audience = _configuration["JWT:Audience"],
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
