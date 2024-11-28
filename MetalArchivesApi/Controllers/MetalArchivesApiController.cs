@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ILogger = Serilog.ILogger;
 
 namespace MetalArchivesApi.Controllers;
 
@@ -14,7 +15,8 @@ public class MetalArchivesApiController(
     IMetalArchivesService metalArchivesService,
     UserManager<IdentityUser> userManager,
     IJwtService jwtService,
-    IMapper mapper)
+    IMapper mapper,
+    ILogger logger)
     : ControllerBase
 {
     [HttpPost("login")]
@@ -23,9 +25,10 @@ public class MetalArchivesApiController(
         var user = await userManager.FindByNameAsync(model.Username);
         if (user == null || !await userManager.CheckPasswordAsync(user, model.Password))
         {
+            logger.Error("Invalid username or password.");
             return Unauthorized();
         }
-
+        logger.Information("User {Username} logged in.", model.Username);
         var token = jwtService.GenerateJwtToken(user.Id);
         return Ok(new { token });
     }
@@ -36,9 +39,10 @@ public class MetalArchivesApiController(
     {
         if (string.IsNullOrEmpty(bandName))
         {
+            logger.Error("Band name is required.");
             return BadRequest("Band name is required.");
         }
-
+        logger.Information("Searching for bands with name {BandName}", bandName);
         var bandsList = await metalArchivesService.SearchBandsByName(bandName);
         return Ok(mapper.Map<List<BandDto>>(bandsList));
     }

@@ -6,10 +6,8 @@ namespace MetalArchivesApi.Mappers;
 
 public class BandProfile : Profile
 {
-
     public BandProfile()
     {
         CreateMap<Band, BandDto>();
-
     }
 }
