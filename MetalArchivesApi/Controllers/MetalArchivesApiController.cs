@@ -1,4 +1,5 @@
-using MetalArchivesApi.Model.Auth;
+using AutoMapper;
+using MetalArchivesApi.Dto;
 using MetalArchivesApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -9,29 +10,23 @@ namespace MetalArchivesApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class MetalArchivesApiController : ControllerBase
+public class MetalArchivesApiController(
+    IMetalArchivesService metalArchivesService,
+    UserManager<IdentityUser> userManager,
+    IJwtService jwtService,
+    IMapper mapper)
+    : ControllerBase
 {
-    private readonly IMetalArchivesService _metalArchivesService;
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly IJwtService _jwtService;
-
-    public MetalArchivesApiController(IMetalArchivesService metalArchivesService, UserManager<IdentityUser> userManager, IJwtService jwtService)
-    {
-        _metalArchivesService = metalArchivesService;
-        _jwtService = jwtService;
-        _userManager = userManager;
-    }
-
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginDto model)
     {
-        var user = await _userManager.FindByNameAsync(model.Username);
-        if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
+        var user = await userManager.FindByNameAsync(model.Username);
+        if (user == null || !await userManager.CheckPasswordAsync(user, model.Password))
         {
             return Unauthorized();
         }
 
-        var token = _jwtService.GenerateJwtToken(user.Id);
+        var token = jwtService.GenerateJwtToken(user.Id);
         return Ok(new { token });
     }
 
@@ -44,8 +39,8 @@ public class MetalArchivesApiController : ControllerBase
             return BadRequest("Band name is required.");
         }
 
-        var result = await _metalArchivesService.SearchBandsByName(bandName);
-        return Ok(result);
+        var bandsList = await metalArchivesService.SearchBandsByName(bandName);
+        return Ok(mapper.Map<List<BandDto>>(bandsList));
     }
 
 }

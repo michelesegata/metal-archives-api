@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "A66e4LwtNIoWm+9TK0u86wGcawPc8quTG2Epa209llNfFgUYrpZVbf9CmF6xNRvhiMo5jMWX99wLVZyYzoia6Q==",
+  "dgSpecHash": "hoqhLTn+YoSX9nhsPH3U4hxBvTvkRSWwCnjgw1uYrA9MVbiv+zwWceOaZOz6gWRPSi7vHt8jH8dpVtoG4a2hfQ==",
   "success": true,
   "projectFilePath": "/Users/michele/RiderProjects/MetalArchivesApi/MetalArchivesApi/MetalArchivesApi.csproj",
   "expectedPackageFiles": [
+    "/Users/michele/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/michele/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/michele/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
     "/Users/michele/.nuget/packages/htmlagilitypack/1.11.67/htmlagilitypack.1.11.67.nupkg.sha512",

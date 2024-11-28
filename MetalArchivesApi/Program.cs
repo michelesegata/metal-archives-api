@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json.Serialization;
 using MetalArchivesApi.Data;
+using MetalArchivesApi.Mappers;
 using MetalArchivesApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -107,6 +108,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddAutoMapper(typeof(BandProfile));
 
 builder.Services.AddControllers().AddJsonOptions(opt =>
 {

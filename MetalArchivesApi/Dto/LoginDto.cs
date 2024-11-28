@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace MetalArchivesApi.Model.Auth;
+namespace MetalArchivesApi.Dto;
 
 public class LoginDto
 {
