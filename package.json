@@ -1,0 +1,23 @@
+{
+  "name": "metalarchivesapi",
+  "version": "1.0.0",
+  "description": "MetalArchives APIs to retrieve content from site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.cs": "dotnet format --include"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-michele:michelesegata/metal-archives-api.git"
+  },
+  "author": "Michele Segata",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
+  }
+}
