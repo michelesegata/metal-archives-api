@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalArchivesApi", "MetalArchivesApi\MetalArchivesApi.csproj", "{6A1031A3-3E03-44B9-B481-2C71D6D04DB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetalArchivesApi.Tests", "MetalArchivesApi.Tests\MetalArchivesApi.Tests.csproj", "{85BC382B-3823-483D-9356-DDF4E95A1118}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{6A1031A3-3E03-44B9-B481-2C71D6D04DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A1031A3-3E03-44B9-B481-2C71D6D04DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A1031A3-3E03-44B9-B481-2C71D6D04DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85BC382B-3823-483D-9356-DDF4E95A1118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85BC382B-3823-483D-9356-DDF4E95A1118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85BC382B-3823-483D-9356-DDF4E95A1118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85BC382B-3823-483D-9356-DDF4E95A1118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -56,6 +56,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddHttpClient<IMetalArchivesService, MetalArchivesService>();
+builder.Services.AddHttpClient<IScrapingService, ScrapingService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
