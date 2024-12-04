@@ -20,5 +20,7 @@ public class ScrapingServiceTest
         Assert.Equal("https://www.metal-archives.com/images/1/1/7/117_logo.jpg?0428", bandDetails.BandLogo);
         Assert.Equal("Switzerland", bandDetails.Country);
         Assert.Equal("CH", bandDetails.CountryCode);
+        Assert.Equal("Active", bandDetails.Status);
+        Assert.Equal("Zürich", bandDetails.Location);
     }
 }

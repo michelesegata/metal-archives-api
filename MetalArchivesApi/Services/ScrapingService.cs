@@ -8,7 +8,6 @@ namespace MetalArchivesApi.Services;
 public class ScrapingService(
     ILogger logger) : IScrapingService
 {
-
     public BandDetails GetBandDetailsPage(string bandId, string bandName)
     {
         logger.Information($"Scraping band details for {bandName}");
@@ -18,9 +17,14 @@ public class ScrapingService(
 
         var bandPhoto = htmlDoc.DocumentNode.QuerySelector("a#photo")?.Attributes["href"]?.Value;
         var bandLogo = htmlDoc.DocumentNode.QuerySelector("a#logo")?.Attributes["href"]?.Value;
-        var firstChild = htmlDoc.DocumentNode.QuerySelector("div#band_stats").QuerySelector("dd").FirstChild;
-        var countryCode = firstChild.Attributes["href"].Value.Split("/").Last();
-        var country = firstChild.InnerText;
+        var bandElements = htmlDoc.DocumentNode.QuerySelector("div#band_stats").QuerySelectorAll("dt");
+        var contryOfOriginElements = FindElementByDt(bandElements, "Country of origin");
+        var countryCode = contryOfOriginElements.FirstChild.Attributes["href"].Value.Split("/").Last();
+        var country = contryOfOriginElements.InnerText;
+        var statusElements = FindElementByDt(bandElements, "Status");
+        var status = statusElements.InnerText;
+        var locationElements = FindElementByDt(bandElements, "Location");
+        var location = locationElements.InnerText;
 
         BandDetails bandDetails = new BandDetails(
             bandName,
@@ -28,8 +32,8 @@ public class ScrapingService(
             bandLogo,
             country,
             countryCode,
-            "Zurich",
-            "Active",
+            location,
+            status,
             1983,
             "1983-present",
             "Techinical Thrash Metal",
@@ -37,5 +41,10 @@ public class ScrapingService(
             "Century Media Records");
 
         return bandDetails;
+    }
+
+    private static HtmlNode FindElementByDt(IList<HtmlNode> nodes, string dtText)
+    {
+        return nodes.FirstOrDefault(el => el.InnerText.Contains(dtText)).NextSibling.NextSibling;
     }
 }
