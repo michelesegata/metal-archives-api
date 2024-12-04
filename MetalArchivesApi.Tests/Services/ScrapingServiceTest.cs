@@ -8,7 +8,7 @@ namespace MetalArchivesApi.Tests.Services;
 public class ScrapingServiceTest
 {
 
-    private readonly ScrapingService _sut = new ScrapingService(new Serilog.LoggerConfiguration().CreateLogger());
+    private readonly ScrapingService _sut = new(new Serilog.LoggerConfiguration().CreateLogger());
 
     [Fact]
     public void GetBandDetailsPage_ReturnData()
@@ -18,5 +18,7 @@ public class ScrapingServiceTest
         Assert.Equal("Coroner", bandDetails.BandName);
         Assert.Equal("https://www.metal-archives.com/images/1/1/7/117_photo.jpg?3316", bandDetails.BandPhoto);
         Assert.Equal("https://www.metal-archives.com/images/1/1/7/117_logo.jpg?0428", bandDetails.BandLogo);
+        Assert.Equal("Switzerland", bandDetails.Country);
+        Assert.Equal("CH", bandDetails.CountryCode);
     }
 }

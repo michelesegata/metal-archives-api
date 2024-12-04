@@ -5,6 +5,7 @@ public class BandDetails(
     string bandPhoto,
     string bandLogo,
     string country,
+    string countryCode,
     string location,
     string status,
     int foundationYear,
@@ -17,6 +18,7 @@ public class BandDetails(
     public string BandPhoto { get; set; } = bandPhoto;
     public string BandLogo { get; set; } = bandLogo;
     public string Country { get; set; } = country;
+    public string CountryCode { get; set; } = countryCode;
     public string Location { get; set; } = location;
     public string Status { get; set; } = status;
     public int FoundationYear { get; set; } = foundationYear;

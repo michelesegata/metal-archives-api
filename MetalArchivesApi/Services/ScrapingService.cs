@@ -18,12 +18,16 @@ public class ScrapingService(
 
         var bandPhoto = htmlDoc.DocumentNode.QuerySelector("a#photo")?.Attributes["href"]?.Value;
         var bandLogo = htmlDoc.DocumentNode.QuerySelector("a#logo")?.Attributes["href"]?.Value;
+        var firstChild = htmlDoc.DocumentNode.QuerySelector("div#band_stats").QuerySelector("dd").FirstChild;
+        var countryCode = firstChild.Attributes["href"].Value.Split("/").Last();
+        var country = firstChild.InnerText;
 
         BandDetails bandDetails = new BandDetails(
             bandName,
             bandPhoto,
             bandLogo,
-            "Switzerland",
+            country,
+            countryCode,
             "Zurich",
             "Active",
             1983,

@@ -7,6 +7,7 @@ public class BandDetailsDto(
     string bandPhoto,
     string bandLogo,
     string country,
+    string countryCode,
     string location,
     string status,
     int foundationYear,
@@ -23,6 +24,8 @@ public class BandDetailsDto(
     public string BandLogo { get; set; } = bandLogo;
     [JsonPropertyName("country")]
     public string Country { get; set; } = country;
+    [JsonPropertyName("countryCode")]
+    public string CountryCode { get; set; } = countryCode;
     [JsonPropertyName("location")]
     public string Location { get; set; } = location;
     [JsonPropertyName("status")]
