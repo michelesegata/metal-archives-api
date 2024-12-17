@@ -27,4 +27,22 @@ public class ScrapingServiceTest
         Assert.Equal("Death, Dreamstates, Depression, Politics, Hate", bandDetails.Themes);
         Assert.Equal("Century Media Records", bandDetails.CurrentLabel);
     }
+
+    [Fact]
+    public void GetBandDetailsPageWithoutPhoto_ReturnData()
+    {
+        var bandDetails = _sut.GetBandDetailsPage("3540490346", "Éla");
+        Assert.NotNull(bandDetails);
+        Assert.Equal("Éla", bandDetails.BandName);
+        Assert.Null(bandDetails.BandPhoto);
+        Assert.Equal("https://www.metal-archives.com/images/3/5/4/0/3540490346_logo.png?4747", bandDetails.BandLogo);
+        Assert.Equal("Italy", bandDetails.Country);
+        Assert.Equal("IT", bandDetails.CountryCode);
+        Assert.Equal("Active", bandDetails.Status);
+        Assert.Equal(2017, bandDetails.FoundationYear);
+        Assert.Equal("2017-present", bandDetails.ActivityYears);
+        Assert.Equal("Doom/Death Metal", bandDetails.Genre);
+        Assert.Equal("N/A", bandDetails.Themes);
+        Assert.Equal("Endless Winter", bandDetails.CurrentLabel);
+    }
 }
