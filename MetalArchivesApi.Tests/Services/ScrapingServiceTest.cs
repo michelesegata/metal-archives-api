@@ -1,3 +1,4 @@
+using System.Linq;
 using JetBrains.Annotations;
 using MetalArchivesApi.Services;
 using Xunit;
@@ -26,6 +27,13 @@ public class ScrapingServiceTest
         Assert.Equal("Technical Thrash Metal", bandDetails.Genre);
         Assert.Equal("Death, Dreamstates, Depression, Politics, Hate", bandDetails.Themes);
         Assert.Equal("Century Media Records", bandDetails.CurrentLabel);
+        Assert.Equal(3, bandDetails.BandMembers.Count);
+        Assert.Equal("Ron Royce", bandDetails.BandMembers.First().Name);
+        Assert.Equal("Bass (1984-1996, 2010-present), Vocals (1985-1996, 2010-present)", bandDetails.BandMembers.First().Instrument);
+        Assert.Equal("Tommy T. Baron", bandDetails.BandMembers[1].Name);
+        Assert.Equal("Guitars (1985-1996, 2010-present)", bandDetails.BandMembers[1].Instrument);
+        Assert.Equal("Diego Rapacchietti", bandDetails.BandMembers[2].Name);
+        Assert.Equal("Drums (2014-present)", bandDetails.BandMembers[2].Instrument);
     }
 
     [Fact]

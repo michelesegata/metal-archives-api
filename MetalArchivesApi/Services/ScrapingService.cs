@@ -30,6 +30,17 @@ public class ScrapingService(
         var themes = GetTextValue(FindElementByDt(bandElements, "Themes"));
         var currentLabel = GetTextValue(FindElementByDt(bandElements, "Current label"));
 
+        //Elements rows = doc.select("div#band_tab_members_current").select("table.display.lineupTable").select("tr.lineupRow");
+        var bandMembers = new List<BandMember>();
+        var bandMembersTable = htmlDoc.DocumentNode.QuerySelector("div#band_tab_members_current").QuerySelector("table.display.lineupTable").QuerySelectorAll("tr.lineupRow");
+        foreach (var bandMemberRow in bandMembersTable)
+        {
+            var bandMemberColumns = bandMemberRow.QuerySelectorAll("td");
+            var name = GetTextValue(bandMemberColumns[0]);
+            var instrument = GetTextValue(bandMemberColumns[1]);
+            bandMembers.Add(new BandMember(name, instrument));
+        }
+
         return new BandDetails(
             bandName,
             bandPhoto,
@@ -42,7 +53,8 @@ public class ScrapingService(
             activeYears,
             genre,
             themes,
-            currentLabel);
+            currentLabel,
+            bandMembers);
     }
 
     private static HtmlNode FindElementByDt(IList<HtmlNode> nodes, string dtText)
@@ -52,6 +64,6 @@ public class ScrapingService(
 
     private static string GetTextValue(HtmlNode node)
     {
-        return Regex.Replace(node.InnerText, @"\s+", " ").Trim();
+        return Regex.Replace(node.InnerText, @"\s+", " ").Replace("&nbsp;", " ").Trim();
     }
 }
