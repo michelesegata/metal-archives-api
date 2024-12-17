@@ -21,6 +21,10 @@ public class ScrapingServiceTest
         Assert.Equal("Switzerland", bandDetails.Country);
         Assert.Equal("CH", bandDetails.CountryCode);
         Assert.Equal("Active", bandDetails.Status);
-        Assert.Equal("Zürich", bandDetails.Location);
+        Assert.Equal(1983, bandDetails.FoundationYear);
+        Assert.Equal("1983 (as VoltAge), 1983-1985, 1985-1996, 2010-present", bandDetails.ActivityYears);
+        Assert.Equal("Technical Thrash Metal", bandDetails.Genre);
+        Assert.Equal("Death, Dreamstates, Depression, Politics, Hate", bandDetails.Themes);
+        Assert.Equal("Century Media Records", bandDetails.CurrentLabel);
     }
 }

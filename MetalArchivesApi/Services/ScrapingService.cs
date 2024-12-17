@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using HtmlAgilityPack.CssSelectors.NetCore;
 using MetalArchivesApi.Model;
@@ -21,10 +22,13 @@ public class ScrapingService(
         var contryOfOriginElements = FindElementByDt(bandElements, "Country of origin");
         var countryCode = contryOfOriginElements.FirstChild.Attributes["href"].Value.Split("/").Last();
         var country = contryOfOriginElements.InnerText;
-        var statusElements = FindElementByDt(bandElements, "Status");
-        var status = statusElements.InnerText;
-        var locationElements = FindElementByDt(bandElements, "Location");
-        var location = locationElements.InnerText;
+        var status = FindElementByDt(bandElements, "Status").InnerText;
+        var location = FindElementByDt(bandElements, "Location").InnerText;
+        var foundationYear = GetTextValue(FindElementByDt(bandElements, "Formed in"));
+        var activeYears = GetTextValue(FindElementByDt(bandElements, "Years active"));
+        var genre = GetTextValue(FindElementByDt(bandElements, "Genre"));
+        var themes = GetTextValue(FindElementByDt(bandElements, "Themes"));
+        var currentLabel = GetTextValue(FindElementByDt(bandElements, "Current label"));
 
         BandDetails bandDetails = new BandDetails(
             bandName,
@@ -34,11 +38,11 @@ public class ScrapingService(
             countryCode,
             location,
             status,
-            1983,
-            "1983-present",
-            "Techinical Thrash Metal",
-            "Technology, Science",
-            "Century Media Records");
+            int.Parse(foundationYear),
+            activeYears,
+            genre,
+            themes,
+            currentLabel);
 
         return bandDetails;
     }
@@ -46,5 +50,10 @@ public class ScrapingService(
     private static HtmlNode FindElementByDt(IList<HtmlNode> nodes, string dtText)
     {
         return nodes.FirstOrDefault(el => el.InnerText.Contains(dtText)).NextSibling.NextSibling;
+    }
+
+    private static string GetTextValue(HtmlNode node)
+    {
+        return Regex.Replace(node.InnerText, @"\s+", " ").Trim();
     }
 }
