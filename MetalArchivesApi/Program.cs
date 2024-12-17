@@ -56,7 +56,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddHttpClient<IMetalArchivesService, MetalArchivesService>();
-builder.Services.AddHttpClient<IScrapingService, ScrapingService>();
+builder.Services.AddSingleton<IScrapingService, ScrapingService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -119,6 +119,8 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddAutoMapper(typeof(BandProfile));
+builder.Services.AddAutoMapper(typeof(BandDetailsProfile));
+builder.Services.AddAutoMapper(typeof(BandMemberProfile));
 
 builder.Services.AddControllers().AddJsonOptions(opt =>
 {

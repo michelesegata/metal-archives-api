@@ -1,10 +1,10 @@
 namespace MetalArchivesApi.Model;
 
 public class BandMember(
-    string Name,
-    string Instrument
+    string name,
+    string instrument
 )
 {
-    public string Name { get; set; } = Name;
-    public string Instrument { get; set; } = Instrument;
+    public string Name { get; set; } = name;
+    public string Instrument { get; set; } = instrument;
 }

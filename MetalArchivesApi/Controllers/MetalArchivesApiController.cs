@@ -46,5 +46,19 @@ public class MetalArchivesApiController(
         var bandsList = await metalArchivesService.SearchBandsByName(bandName);
         return Ok(mapper.Map<List<BandDto>>(bandsList));
     }
+    [HttpGet("band-details")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> GetBandDetails([FromQuery] string bandId, [FromQuery] string bandName)
+    {
+        if (string.IsNullOrEmpty(bandName))
+        {
+            logger.Error("Band name is required.");
+            return BadRequest("Band name is required.");
+        }
+        logger.Information("Retrieving details for bands with name {BandName} and id {BandId}", bandName, bandId);
+        var bandDetails = await metalArchivesService.GetBandDetails(bandId, bandName);
+        return Ok(mapper.Map<BandDetailsDto>(bandDetails));
+    }
+
 
 }

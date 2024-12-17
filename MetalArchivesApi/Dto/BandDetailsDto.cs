@@ -14,13 +14,14 @@ public class BandDetailsDto(
     string activityYears,
     string genre,
     string themes,
-    string currentLabel)
+    string currentLabel,
+    List<BandMemberDto> bandMembers)
 {
     [JsonPropertyName("bandName")]
     public string BandName { get; set; } = bandName;
     [JsonPropertyName("bandPhoto")]
     public string BandPhoto { get; set; } = bandPhoto;
-    [JsonPropertyName("bandName")]
+    [JsonPropertyName("bandLogo")]
     public string BandLogo { get; set; } = bandLogo;
     [JsonPropertyName("country")]
     public string Country { get; set; } = country;
@@ -40,4 +41,6 @@ public class BandDetailsDto(
     public string Themes { get; set; } = themes;
     [JsonPropertyName("currentLabel")]
     public string CurrentLabel { get; set; } = currentLabel;
+    [JsonPropertyName("bandMembers")]
+    public List<BandMemberDto> BandMembers { get; set; } = bandMembers;
 }
