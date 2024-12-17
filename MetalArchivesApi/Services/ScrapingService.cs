@@ -30,7 +30,7 @@ public class ScrapingService(
         var themes = GetTextValue(FindElementByDt(bandElements, "Themes"));
         var currentLabel = GetTextValue(FindElementByDt(bandElements, "Current label"));
 
-        BandDetails bandDetails = new BandDetails(
+        return new BandDetails(
             bandName,
             bandPhoto,
             bandLogo,
@@ -43,8 +43,6 @@ public class ScrapingService(
             genre,
             themes,
             currentLabel);
-
-        return bandDetails;
     }
 
     private static HtmlNode FindElementByDt(IList<HtmlNode> nodes, string dtText)
