@@ -13,7 +13,8 @@ public class BandDetails(
     string genre,
     string themes,
     string currentLabel,
-    List<BandMember> bandMembers)
+    List<BandMember> bandMembers,
+    List<Album> discography)
 {
     public string BandName { get; set; } = bandName;
     public string BandPhoto { get; set; } = bandPhoto;
@@ -28,4 +29,5 @@ public class BandDetails(
     public string Themes { get; set; } = themes;
     public string CurrentLabel { get; set; } = currentLabel;
     public List<BandMember> BandMembers { get; set; } = bandMembers;
+    public List<Album> Discography { get; set; } = discography;
 }

@@ -1,5 +1,6 @@
 using System.Linq;
 using JetBrains.Annotations;
+using MetalArchivesApi.Model;
 using MetalArchivesApi.Services;
 using Xunit;
 
@@ -34,6 +35,10 @@ public class ScrapingServiceTest
         Assert.Equal("Guitars (1985-1996, 2010-present)", bandDetails.BandMembers[1].Instrument);
         Assert.Equal("Diego Rapacchietti", bandDetails.BandMembers[2].Name);
         Assert.Equal("Drums (2014-present)", bandDetails.BandMembers[2].Instrument);
+        Assert.Equal(23, bandDetails.Discography.Count);
+        Assert.Equal(5, bandDetails.Discography.FindAll(album => album.ReleaseType.Equals(ReleaseType.Fulllength)).Count);
+        Assert.Equal("R.I.P.", bandDetails.Discography.First(album => album.ReleaseType.Equals(ReleaseType.Fulllength)).Title);
+        Assert.Equal(1987, bandDetails.Discography.First(album => album.ReleaseType.Equals(ReleaseType.Fulllength)).Year);
     }
 
     [Fact]

@@ -13,6 +13,7 @@ public class ScrapingService(
     {
         logger.Information($"Scraping band details for {bandName}");
         var html = $"http://www.metal-archives.com/bands/{bandName}/{bandId}";
+        var discograpphyHtml = $"https://www.metal-archives.com/band/discography/id/{bandId}/tab/all";
         HtmlWeb web = new HtmlWeb();
         var htmlDoc = web.Load(html);
 
@@ -41,6 +42,18 @@ public class ScrapingService(
             bandMembers.Add(new BandMember(name, instrument));
         }
 
+        var discography = new List<Album>();
+        var htmlDiscography = web.Load(discograpphyHtml);
+        var discographyTable = htmlDiscography.DocumentNode.QuerySelector("table.display.discog").QuerySelectorAll("tbody tr");
+        foreach (var releaseRow in discographyTable)
+        {
+            var releaseColumns = releaseRow.QuerySelectorAll("td");
+            var title = GetTextValue(releaseColumns[0]);
+            var type = Enum.Parse<ReleaseType>(GetTextValue(releaseColumns[1]).Replace("-", "").Replace(" ", ""));
+            var year = int.Parse(GetTextValue(releaseColumns[2]));
+            discography.Add(new Album(title, year, type));
+        }
+
         return new BandDetails(
             bandName,
             bandPhoto,
@@ -54,7 +67,8 @@ public class ScrapingService(
             genre,
             themes,
             currentLabel,
-            bandMembers);
+            bandMembers,
+            discography);
     }
 
     private static HtmlNode FindElementByDt(IList<HtmlNode> nodes, string dtText)
